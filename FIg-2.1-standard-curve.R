@@ -23,10 +23,10 @@ graph <- ggplot(
   ) +
   geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
   geom_point() +
-  stat_regline_equation() +
+  stat_regline_equation(label.y = 0.5) +
   stat_cor(
     aes(label = after_stat(rr.label)),
-    label.y.npc = "center",
+    label.y = 0.45,
     label.x.npc = "left"
   ) +
   ggtitle("Fig. 2.1 Standard Curve for Salicyate") +

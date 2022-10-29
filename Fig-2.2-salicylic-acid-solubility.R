@@ -2,9 +2,6 @@ library(ggplot2)
 library(ggpubr)
 library(httpgd)
 
-hgd()
-hgd_browse()
-
 # data from Martindale
 na_salicylate_mw <- 160.1
 
@@ -29,27 +26,31 @@ for (value in absorbance) {
 solubility_df <- data.frame(
   salicylate_conc_in_solution = salicylate_conc_in_solution,
   total_salicylate_conc = total_salicylate_conc,
-  trend = c(
-    "Increasing", "Increasing", "Increasing",
-    "Plateaued", "Plateaued", "Plateaued"
-  )
+  trend = c(rep(c("Upward", "Plateaued"), each = 3))
 )
 
 graph <- ggplot(
   data = solubility_df,
   aes(x = total_salicylate_conc, y = salicylate_conc_in_solution, color = trend)
-  ) +
-  geom_point() +
-  geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
-  stat_regline_equation() +
-  stat_regline_equation(
-    aes(label = after_stat(rr.label)),
-    label.x.npc = "center",
-    label.y.npc = "bottom"
-  ) +
-  ggtitle("Fig. 2.2 Solubility Diagram of Salicylic Acid Alone") +
-  xlab("Total Concentraion of Salicylate (M)") +
-  ylab("Concentration of Salicylic Acid in Solution (M)") +
-  labs(color = "Trends")
+) +
+geom_point() +
+geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
+stat_regline_equation(label.x = 0.015, label.y.npc = "bottom") +
+stat_regline_equation(
+  aes(label = after_stat(rr.label)),
+  label.x = 0.02,
+  label.y.npc = "bottom"
+) +
+ggtitle(
+  "Fig. 2.2 Concentration of Salicylic Acid in Solution vs.
+   Total Concentraion of Salicylate Added"
+) +
+xlab("Total Concentraion of Salicylate Added (M)") +
+ylab("Concentration of Salicylic Acid in Solution (M)") +
+labs(color = "Trends")
+
+
+hgd()
+hgd_browse()
 
 plot(graph)
