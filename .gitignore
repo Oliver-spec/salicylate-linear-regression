@@ -1,0 +1,7 @@
+# png files
+fig-2.1-std-curve.png
+fig-2.2-solubility-sa-alone.png
+
+# R history & data
+.RData
+.Rhistory
