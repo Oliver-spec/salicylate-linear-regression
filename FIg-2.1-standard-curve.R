@@ -1,9 +1,5 @@
 library(ggplot2)
 library(ggpubr)
-library(httpgd)
-
-hgd()
-hgd_browse()
 
 absorbance <- c(0, 0.04, 0.08, 0.18, 0.35, 0.51, 0.63)
 salicyate_volume <- c(0, 0.5, 1, 2, 4, 6, 7.5)
@@ -18,7 +14,7 @@ standard_curve_df <- data.frame(
   absorbance = absorbance, concentration = salicyate_conc
 )
 
-graph <- ggplot(
+ggplot(
     data = standard_curve_df, aes(x = concentration, y = absorbance)
   ) +
   geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
@@ -33,4 +29,4 @@ graph <- ggplot(
   xlab("Salicayate Concentration (M)") +
   ylab("Absorbance")
 
-plot(graph)
+ggsave("fig-2.1.png")

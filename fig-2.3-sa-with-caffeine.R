@@ -1,6 +1,5 @@
 library(ggplot2)
 library(ggpubr)
-library(httpgd)
 
 absorbance <- c(
   # upward
@@ -36,7 +35,7 @@ solubility_df <- data.frame(
   Trends = c(rep(c("Upward", "Plateaued", "Downward"), c(7, 8, 4)))
 )
 
-graph <- ggplot(
+ggplot(
   data = solubility_df,
   aes(x = caffeine_conc, y = salicylate_conc_in_solution, color = Trends)
 ) +
@@ -48,13 +47,11 @@ stat_regline_equation(
   label.x.npc = "center",
   label.y.npc = "bottom"
 ) +
+ylim(0.01, 0.03) +
 ggtitle(
   "Fig. 2.3 Concetration of Salicylic Acid vs. Concentration of Caffeine"
 ) +
 xlab("Concentration of Caffeine (M)") +
 ylab("Concentration of Salicylic Acid (M)")
 
-hgd()
-hgd_browse()
-
-plot(graph)
+ggsave("fig-2.3.png", height = 7, width = 12)

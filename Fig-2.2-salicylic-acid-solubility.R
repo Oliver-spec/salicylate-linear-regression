@@ -1,6 +1,5 @@
 library(ggplot2)
 library(ggpubr)
-library(httpgd)
 
 # data from Martindale
 na_salicylate_mw <- 160.1
@@ -29,7 +28,7 @@ solubility_df <- data.frame(
   trend = c(rep(c("Upward", "Plateaued"), each = 3))
 )
 
-graph <- ggplot(
+ggplot(
   data = solubility_df,
   aes(x = total_salicylate_conc, y = salicylate_conc_in_solution, color = trend)
 ) +
@@ -49,8 +48,5 @@ xlab("Total Concentraion of Salicylate Added (M)") +
 ylab("Concentration of Salicylic Acid in Solution (M)") +
 labs(color = "Trends")
 
+ggsave("fig-2.2.png", height = 7, width = 12)
 
-hgd()
-hgd_browse()
-
-plot(graph)
