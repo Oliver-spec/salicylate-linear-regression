@@ -41,10 +41,10 @@ ggplot(
 ) +
 geom_point() +
 geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
-stat_regline_equation(label.x = 0.02, label.y.npc = "bottom") +
+stat_regline_equation(label.x = 0.01, label.y.npc = "bottom") +
 stat_regline_equation(
   aes(label = after_stat(rr.label)),
-  label.x.npc = "center",
+  label.x = 0.04,
   label.y.npc = "bottom"
 ) +
 ylim(0.01, 0.03) +
@@ -54,4 +54,4 @@ ggtitle(
 xlab("Concentration of Caffeine (M)") +
 ylab("Concentration of Salicylic Acid (M)")
 
-ggsave("fig-2.3.png", height = 7, width = 12)
+ggsave("fig_2.3.png")

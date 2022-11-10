@@ -29,4 +29,4 @@ ggplot(
   xlab("Salicayate Concentration (M)") +
   ylab("Absorbance")
 
-ggsave("fig-2.1.png")
+ggsave("fig_2.1.png")

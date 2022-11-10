@@ -37,7 +37,7 @@ geom_smooth(method = "lm", fullrange = TRUE, se = FALSE) +
 stat_regline_equation(label.x = 0.015, label.y.npc = "bottom") +
 stat_regline_equation(
   aes(label = after_stat(rr.label)),
-  label.x = 0.02,
+  label.x = 0.025,
   label.y.npc = "bottom"
 ) +
 ggtitle(
@@ -48,5 +48,5 @@ xlab("Total Concentraion of Salicylate Added (M)") +
 ylab("Concentration of Salicylic Acid in Solution (M)") +
 labs(color = "Trends")
 
-ggsave("fig-2.2.png", height = 7, width = 12)
+ggsave("fig_2.2.png")
 
