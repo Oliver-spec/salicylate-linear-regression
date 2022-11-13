@@ -20,7 +20,12 @@ caffeine_stock_vol <- c(0.8,
 sal_stock_vol <- c(rep(1, 19))
 h2so4_vol <- c(18.2, 18.0, 17.8, 17.5, 17.0, 16.5, 15.7, 14.9, 14.0, 13.0, 12.2,
                11.5, 10.8, 10.0, 9.0, 7.5, 6.5, 5.2, 4.0)
-caffeine_conc <- caffeine_stock_vol / c(rep(20, 19))
+caffeine_conc <- c()
+
+for (value in caffeine_stock_vol) {
+  conc <- value / 1000 * 0.08 / (20 / 1000)
+  caffeine_conc <- c(caffeine_conc, conc)
+}
 sal_conc <- sal_stock_vol / c(rep(20, 19))
 
 table_2.3 <- data.frame(caffeine_stock_vol = caffeine_stock_vol,

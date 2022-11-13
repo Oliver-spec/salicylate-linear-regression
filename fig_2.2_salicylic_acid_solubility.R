@@ -25,7 +25,7 @@ for (value in absorbance) {
 solubility_df <- data.frame(
   salicylate_conc_in_solution = salicylate_conc_in_solution,
   total_salicylate_conc = total_salicylate_conc,
-  trend = c(rep(c("Upward", "Plateaued"), each = 3))
+  trend = c(rep("Upward", 4), rep("Plateaued", 2))
 )
 
 ggplot(
